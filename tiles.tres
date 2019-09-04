@@ -1,0 +1,62 @@
+[gd_resource type="TileSet" load_steps=5 format=2]
+
+[ext_resource path="res://art assets/tiles/tiles_spritesheet.png" type="Texture" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( 504, 288, 574, 288, 576, 360, 502, 360 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( 0, 0, 70, 0, 70, 70, 0, 70 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 70, 0, 70, 70, 0, 70 )
+
+[resource]
+0/name = "Sprite"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 648, 288, 70, 70 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 457, 468 )
+0/occluder = SubResource( 1 )
+0/navigation_offset = Vector2( 457, 468 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "wall"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 504, 288, 70, 70 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/occluder = SubResource( 2 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "tiles_spritesheet.png 2"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 864, 70, 70 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = 0
+3/name = "tiles_spritesheet.png 3"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 648, 216, 70, 70 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [  ]
+3/z_index = 0
