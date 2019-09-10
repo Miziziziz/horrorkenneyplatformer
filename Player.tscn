@@ -10,10 +10,10 @@
 [ext_resource path="res://art assets/p1_walk/p1_hurt.png" type="Texture" id=8]
 [ext_resource path="res://white.png" type="Texture" id=9]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "walk"
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
@@ -36,19 +36,20 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 22.0
 height = 40.0
 
 [node name="Player" type="KinematicBody2D"]
+collision_layer = 2
 script = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/walk = SubResource( 2 )
+anims/walk = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -45.4764 )
-frames = SubResource( 3 )
+frames = SubResource( 2 )
 animation = "stand"
 speed_scale = 2.0
 playing = true
@@ -56,7 +57,7 @@ playing = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, -42 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

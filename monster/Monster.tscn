@@ -1,0 +1,161 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://monster/Monster.gd" type="Script" id=1]
+[ext_resource path="res://monster/Body.gd" type="Script" id=2]
+[ext_resource path="res://art assets/p1_walk/p1_front.png" type="Texture" id=3]
+[ext_resource path="res://monster/Leg.tscn" type="PackedScene" id=4]
+[ext_resource path="res://monster/Leg.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Monster" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Body" type="Node2D" parent="."]
+editor/display_folded = true
+position = Vector2( 13.509, 61.2236 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, -17 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 17, 0 )
+rotation = 1.94878
+texture = ExtResource( 3 )
+
+[node name="Sprite3" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 37.5607, -38.9059 )
+rotation = 1.29164
+texture = ExtResource( 3 )
+
+[node name="Sprite4" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -17.0427, 11.8879 )
+rotation = 3.54523
+texture = ExtResource( 3 )
+
+[node name="Sprite5" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -15.9619, -15.1301 )
+rotation = 1.59353
+texture = ExtResource( 3 )
+
+[node name="Sprite6" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -31.092, -55.1167 )
+rotation = -0.58235
+texture = ExtResource( 3 )
+
+[node name="Sprite7" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 4.0314, -39.4463 )
+rotation = 0.646739
+texture = ExtResource( 3 )
+
+[node name="Sprite8" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -2.99329, -69.1661 )
+rotation = 0.378275
+texture = ExtResource( 3 )
+
+[node name="Sprite9" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -64.9456, 7.42995 )
+rotation = 3.91415
+texture = ExtResource( 3 )
+
+[node name="Sprite10" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -56.489, -32.962 )
+rotation = 5.20848
+texture = ExtResource( 3 )
+
+[node name="Sprite11" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -57.0023, -53.4957 )
+rotation = 5.20848
+texture = ExtResource( 3 )
+
+[node name="Sprite12" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -71.3759, -8.32155 )
+rotation = 4.81582
+texture = ExtResource( 3 )
+
+[node name="Sprite13" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -34.4152, 8.61877 )
+rotation = 3.50798
+texture = ExtResource( 3 )
+
+[node name="Sprite14" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 7.16545, 22.479 )
+rotation = 2.66904
+texture = ExtResource( 3 )
+
+[node name="Sprite15" type="Sprite" parent="Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 38.4794, -73.516 )
+rotation = 0.949484
+texture = ExtResource( 3 )
+
+[node name="LeftLegs" type="Node2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 31.5038 )
+
+[node name="Leg" parent="LeftLegs" instance=ExtResource( 4 )]
+position = Vector2( -49.3028, -9.72911 )
+script = ExtResource( 5 )
+flipped = false
+
+[node name="Leg2" parent="LeftLegs" instance=ExtResource( 4 )]
+position = Vector2( -52.8483, 39.3798 )
+script = ExtResource( 5 )
+flipped = false
+
+[node name="Leg3" parent="LeftLegs" instance=ExtResource( 4 )]
+position = Vector2( -81.2059, 16.6785 )
+script = ExtResource( 5 )
+flipped = false
+
+[node name="RightLegs" type="Node2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 31.5038 )
+
+[node name="Leg" parent="RightLegs" instance=ExtResource( 4 )]
+position = Vector2( 39.6111, 23.6279 )
+script = ExtResource( 5 )
+
+[node name="Leg2" parent="RightLegs" instance=ExtResource( 4 )]
+position = Vector2( 60.1976, -27.3342 )
+script = ExtResource( 5 )
+
+[node name="Leg3" parent="RightLegs" instance=ExtResource( 4 )]
+position = Vector2( 70.5056, -61.6177 )
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="RightRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 150, 0 )
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( -150, 0 )
+
+[node name="DownRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 150 )
+
+[node name="UpRay" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, -100 )
