@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 LevelManager="*res://LevelManager.tscn"
+FanSoundManager="*res://FanSoundManager.tscn"
 
 [input]
 

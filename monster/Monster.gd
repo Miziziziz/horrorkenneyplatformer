@@ -28,6 +28,17 @@ var player = null
 func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
 	set_start_leg_positions()
+	player.connect("stepped", self, "alert")
+
+func alert():
+	if FanSoundManager.is_safe_to_move() or sprinting:
+		return
+	print("alerted")
+	sprinting = true
+	if player.global_position.x > global_position.x:
+		cur_travel_dir = TRAVEL_DIR.RIGHT
+	else:
+		cur_travel_dir = TRAVEL_DIR.LEFT
 
 func set_start_leg_positions():
 	for leg in left_legs:

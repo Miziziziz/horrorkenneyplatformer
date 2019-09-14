@@ -19,6 +19,11 @@ var step_height = 40
 var step_rate = 0.5
 var step_time = 0.0
 
+signal completed_step
+var signalled_end_of_step = true
+
+onready var step_player = $StepPlayer
+
 func _ready():
 	len_upper = joint1.position.x
 	len_middle = joint2.position.x
@@ -35,6 +40,7 @@ func attack(obj):
 func step(g_pos):
 	if goal_pos == g_pos:
 		return
+	signalled_end_of_step = false
 	goal_pos = g_pos
 	var hand_pos = hand.global_position
 	
@@ -67,6 +73,10 @@ func _process(delta):
 				attack_obj.global_position = s_pos
 				attack_obj.kill()
 			attack_obj = null
+		elif !signalled_end_of_step:
+			emit_signal("completed_step")
+			step_player.play_step()
+		signalled_end_of_step = true
 			
 	set_hand_pos(target_pos)
 

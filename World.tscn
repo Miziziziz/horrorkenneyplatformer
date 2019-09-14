@@ -40,7 +40,7 @@ tile_data = PoolIntArray( -196614, 1, 0, -196613, 1, 0, -196612, 1, 0, -196611, 
 position = Vector2( 986, 493 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 850, 425 )
+position = Vector2( 850, 442 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )

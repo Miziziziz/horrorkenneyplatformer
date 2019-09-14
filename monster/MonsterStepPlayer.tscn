@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://monster/StepPlayer.gd" type="Script" id=1]
+
+[node name="StepPlayer" type="AudioStreamPlayer2D"]
+attenuation = 1.86607
+bus = "MonsterSteps"
+script = ExtResource( 1 )

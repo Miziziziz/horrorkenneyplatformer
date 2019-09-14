@@ -5,7 +5,12 @@ var level_list = [
 ]
 
 func load_next_level():
-	get_tree().change_scene(level_list[0])
+	load_level(0)
 
 func load_previous_level():
 	pass
+
+func load_level(ind):
+	FanSoundManager.stop_fan()
+	get_tree().change_scene(level_list[ind])
+	

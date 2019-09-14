@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://art assets/p1_walk/p1_jump.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://art assets/p1_walk/p1_stand.png" type="Texture" id=7]
 [ext_resource path="res://art assets/p1_walk/p1_hurt.png" type="Texture" id=8]
 [ext_resource path="res://white.png" type="Texture" id=9]
+[ext_resource path="res://sfx/player_footsteps/footstep00.ogg" type="AudioStream" id=10]
+[ext_resource path="res://FootStepPlayer.gd" type="Script" id=11]
+[ext_resource path="res://sfx/death_sound.ogg" type="AudioStream" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "walk"
@@ -144,3 +147,12 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDetector"]
 shape = SubResource( 7 )
+
+[node name="FootStepPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+bus = "PlayerSteps"
+script = ExtResource( 11 )
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )

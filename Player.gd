@@ -13,15 +13,23 @@ onready var anim = $AnimatedSprite
 var dead = false
 
 onready var door_detector = $DoorDetector
-#func _ready():
+
+signal stepped
+
+func _ready():
+	FanSoundManager.start_fan()
+	anim.connect("frame_changed", self, "attempt_play_footstep")
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 	if dead and Input.is_action_just_pressed("restart"):
+		FanSoundManager.stop_fan()
 		get_tree().reload_current_scene()
 
+var was_grounded = true
+var was_moving = false
 func _physics_process(delta):
 	if dead:
 		return
@@ -73,6 +81,12 @@ func _physics_process(delta):
 		$CanvasLayer/OpenDoorMessage.show()
 	else:
 		$CanvasLayer/OpenDoorMessage.hide()
+	
+	var is_moving = move_dir != 0.0
+	if was_grounded != grounded or (grounded and !was_moving and is_moving):
+		play_footstep()
+	was_grounded = grounded
+	was_moving = is_moving
 
 func play_anim(nm):
 	if anim.animation == nm:
@@ -83,9 +97,18 @@ func flip():
 	facing_right = !facing_right
 	anim.flip_h = !anim.flip_h
 
+func attempt_play_footstep():
+	if anim.animation == "walk" and anim.frame == 4:
+		play_footstep()
+
+func play_footstep():
+	$FootStepPlayer.play_step()
+	emit_signal("stepped")
+
 func kill():
 	dead = true
 	play_anim("hurt")
 	$BloodParticles2D.emitting = true
 	$BloodParticles2D2.emitting = true
 	$CanvasLayer/RestartMessage.show()
+	$DeathSoundPlayer.play()

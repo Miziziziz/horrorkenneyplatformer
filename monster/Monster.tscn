@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://monster/Monster.gd" type="Script" id=1]
 [ext_resource path="res://monster/Body.gd" type="Script" id=2]
 [ext_resource path="res://art assets/p1_walk/p1_front.png" type="Texture" id=3]
 [ext_resource path="res://monster/Leg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://monster/Leg.gd" type="Script" id=5]
+[ext_resource path="res://monster/MonsterStepPlayer.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -118,7 +119,6 @@ rotation = 0.949484
 texture = ExtResource( 3 )
 
 [node name="LeftLegs" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 31.5038 )
 
 [node name="Leg" parent="LeftLegs" instance=ExtResource( 4 )]
@@ -180,3 +180,5 @@ amount = 6
 lifetime = 4.0
 local_coords = false
 process_material = SubResource( 2 )
+
+[node name="StepPlayer" parent="." instance=ExtResource( 6 )]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/leaves01.ogg-70427a24ecf0d3c726d9943043e8efff.oggstr"
+
+[deps]
+
+source_file="res://sfx/monster_footsteps/leaves01.ogg"
+dest_files=[ "res://.import/leaves01.ogg-70427a24ecf0d3c726d9943043e8efff.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
