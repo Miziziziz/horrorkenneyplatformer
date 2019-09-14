@@ -10,12 +10,21 @@ var y_velo = 0.0
 var facing_right = true
 
 onready var anim = $AnimatedSprite
+var dead = false
+
+onready var door_detector = $DoorDetector
+#func _ready():
+#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
+	if dead and Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
 
 func _physics_process(delta):
+	if dead:
+		return
 	var move_dir = 0.0
 	if Input.is_action_pressed("move_right"):
 		move_dir += 1
@@ -53,6 +62,17 @@ func _physics_process(delta):
 		flip()
 	elif move_dir < 0 and facing_right:
 		flip()
+	
+	var doors = door_detector.get_overlapping_areas()
+	if doors.size() > 0:
+		if Input.is_action_just_pressed("use"):
+			if doors[0].go_to_next_level:
+				LevelManager.load_next_level()
+			else:
+				LevelManager.load_previous_level()
+		$CanvasLayer/OpenDoorMessage.show()
+	else:
+		$CanvasLayer/OpenDoorMessage.hide()
 
 func play_anim(nm):
 	if anim.animation == nm:
@@ -62,4 +82,10 @@ func play_anim(nm):
 func flip():
 	facing_right = !facing_right
 	anim.flip_h = !anim.flip_h
-	
+
+func kill():
+	dead = true
+	play_anim("hurt")
+	$BloodParticles2D.emitting = true
+	$BloodParticles2D2.emitting = true
+	$CanvasLayer/RestartMessage.show()

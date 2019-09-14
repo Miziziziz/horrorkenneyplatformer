@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://art assets/gradients/round_light_texture.png" type="Texture" id=3]
-[ext_resource path="res://art assets/tiles/box.png" type="Texture" id=4]
-[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://art assets/gradients/round_light_texture.png" type="Texture" id=4]
+[ext_resource path="res://art assets/tiles/box.png" type="Texture" id=5]
+[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -33,10 +34,13 @@ polygon = PoolVector2Array( 17, 17, -17, 17, -17, -17, 17, -17 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 69, 69 )
 format = 1
-tile_data = PoolIntArray( -196614, 1, 0, -196613, 1, 0, -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -262140, 1, 0, -262139, 1, 0, -131078, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 196604, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458768, 1, 0, 458769, 1, 0, 458770, 1, 0, 458771, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 655348, 1, 0, 655349, 1, 0, 655350, 1, 0, 655351, 1, 0, 655352, 1, 0, 655353, 1, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 720888, 1, 0, 720889, 1, 0, 720890, 1, 0, 720891, 1, 0, 720892, 1, 0, 720893, 1, 0, 720894, 1, 0, 786429, 1, 0, 786430, 1, 0, 786431, 1, 0, 720896, 1, 0, 720897, 1, 0, 720898, 1, 0, 720899, 1, 0, 720900, 1, 0 )
+tile_data = PoolIntArray( -196614, 1, 0, -196613, 1, 0, -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -262140, 1, 0, -262139, 1, 0, -131078, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65550, 1, 0, 65551, 1, 0, 65552, 1, 0, 65553, 1, 0, 65554, 1, 0, 65555, 1, 0, 65556, 1, 0, 196598, 1, 0, 196604, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 131089, 1, 0, 131090, 1, 0, 131091, 1, 0, 131092, 1, 0, 262133, 1, 0, 262134, 1, 0, 262135, 1, 0, 262136, 1, 0, 262137, 1, 0, 262138, 1, 0, 262139, 1, 0, 262140, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 327669, 1, 0, 262164, 1, 0, 393205, 1, 0, 327700, 1, 0, 458741, 1, 0, 393236, 1, 0, 524277, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 589813, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524308, 1, 0, 655348, 1, 0, 655349, 1, 0, 655350, 1, 0, 655351, 1, 0, 655352, 1, 0, 655353, 1, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 589844, 1, 0, 720888, 1, 0, 720889, 1, 0, 720890, 1, 0, 720891, 1, 0, 720892, 1, 0, 720893, 1, 0, 655380, 1, 0, 786429, 1, 0, 720916, 1, 0, 851966, 1, 0, 851967, 1, 0, 786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 786449, 1, 0, 786450, 1, 0, 786451, 1, 0, 786452, 1, 0, 786453, 1, 0 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 446.554, 476.442 )
+[node name="Door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 986, 493 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 850, 425 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
@@ -51,7 +55,7 @@ anchor_bottom = 1.0
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 289, 340 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 energy = 1.2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -60,31 +64,25 @@ shadow_gradient_length = 0.2
 [node name="Light2D5" type="Light2D" parent="."]
 position = Vector2( 1241, 408 )
 scale = Vector2( 3.02246, 3.02246 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
+energy = 1.2
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_gradient_length = 0.2
+
+[node name="Light2D6" type="Light2D" parent="."]
+position = Vector2( 782, 748 )
+scale = Vector2( 3.02246, 3.02246 )
+texture = ExtResource( 4 )
 energy = 1.2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
 shadow_gradient_length = 0.2
 
 [node name="Light2D2" type="Light2D" parent="."]
-position = Vector2( -119, 510 )
-texture = ExtResource( 3 )
-energy = 1.2
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_gradient_length = 0.2
-
-[node name="Light2D3" type="Light2D" parent="."]
-position = Vector2( -680, 510 )
-texture = ExtResource( 3 )
-energy = 1.2
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 1 )
-shadow_gradient_length = 0.2
-
-[node name="Light2D4" type="Light2D" parent="."]
-position = Vector2( 289.5, 629 )
-texture = ExtResource( 3 )
+position = Vector2( -255, 442 )
+scale = Vector2( 1.76172, 1.76172 )
+texture = ExtResource( 4 )
 energy = 1.2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -96,7 +94,7 @@ position = Vector2( 272, 459 )
 
 [node name="Sprite" type="Sprite" parent="Crate"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crate"]
 shape = SubResource( 3 )
@@ -110,7 +108,7 @@ position = Vector2( 221, 459 )
 
 [node name="Sprite" type="Sprite" parent="Crate2"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crate2"]
 shape = SubResource( 3 )
@@ -124,7 +122,7 @@ position = Vector2( 306, 459 )
 
 [node name="Sprite" type="Sprite" parent="Crate3"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crate3"]
 shape = SubResource( 3 )
@@ -132,5 +130,5 @@ shape = SubResource( 3 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Crate3"]
 occluder = SubResource( 4 )
 
-[node name="Monster" parent="." instance=ExtResource( 5 )]
-position = Vector2( 252.509, 312.877 )
+[node name="Monster" parent="." instance=ExtResource( 6 )]
+position = Vector2( 442, 714 )

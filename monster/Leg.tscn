@@ -30,12 +30,12 @@ position = Vector2( 127.227, 1.45519e-11 )
 
 [node name="Sprite2" type="Sprite" parent="Joint1/Joint2"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 85.4234, -0.000105787 )
+position = Vector2( 65.5759, -0.833137 )
 rotation = 1.57079
-scale = Vector2( 0.111541, 2.19788 )
+scale = Vector2( 0.0866707, 1.70782 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( -1, 3, 67, 81 )
 
 [node name="Hand" type="Position2D" parent="Joint1/Joint2"]
-position = Vector2( 172.005, 0 )
+position = Vector2( 138.191, 0 )

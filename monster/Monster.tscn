@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://monster/Monster.gd" type="Script" id=1]
 [ext_resource path="res://monster/Body.gd" type="Script" id=2]
@@ -7,6 +7,18 @@
 [ext_resource path="res://monster/Leg.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 50.0
+flag_disable_z = true
+gravity = Vector3( 0, 200, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.53
+color = Color( 0, 0, 0, 1 )
 
 [node name="Monster" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -159,3 +171,12 @@ cast_to = Vector2( 0, 150 )
 [node name="UpRay" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, -100 )
+
+[node name="Details" type="Node2D" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="Details"]
+position = Vector2( -7.35229, 56.3772 )
+amount = 6
+lifetime = 4.0
+local_coords = false
+process_material = SubResource( 2 )

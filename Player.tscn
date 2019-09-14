@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://art assets/p1_walk/p1_jump.png" type="Texture" id=2]
@@ -40,7 +40,29 @@ animations = [ {
 radius = 22.0
 height = 40.0
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.5143 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+gravity = Vector3( 0, 300, 0 )
+initial_velocity = 150.0
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 4.0
+scale_curve = SubResource( 5 )
+color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 20.889
+
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_layer = 2
 script = ExtResource( 1 )
 
@@ -48,25 +70,77 @@ script = ExtResource( 1 )
 anims/walk = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -45.4764 )
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, 1.75098 )
 frames = SubResource( 2 )
 animation = "stand"
 speed_scale = 2.0
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -42 )
+position = Vector2( 0, 4.82944 )
 shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, 47.2274 )
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
 [node name="Background" type="Sprite" parent="."]
 self_modulate = Color( 0.356863, 0.356863, 0.356863, 1 )
+position = Vector2( 0, 47.2274 )
 scale = Vector2( 100, 100 )
 z_index = -3
 z_as_relative = false
 texture = ExtResource( 9 )
+
+[node name="BloodParticles2D" type="Particles2D" parent="."]
+rotation = -0.309198
+emitting = false
+amount = 32
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="BloodParticles2D2" type="Particles2D" parent="."]
+rotation = -2.93769
+emitting = false
+amount = 32
+lifetime = 2.0
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RestartMessage" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -7.0
+margin_right = 58.0
+margin_bottom = 7.0
+text = "Press 'R' to restart"
+
+[node name="OpenDoorMessage" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -7.0
+margin_right = 58.0
+margin_bottom = 7.0
+text = "Press 'E' to open door"
+
+[node name="DoorDetector" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorDetector"]
+shape = SubResource( 7 )

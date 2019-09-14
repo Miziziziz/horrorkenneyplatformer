@@ -24,6 +24,13 @@ func _ready():
 	len_middle = joint2.position.x
 	len_lower = hand.position.x
 
+var attack_obj = null
+func attack(obj):
+	attack_obj = obj
+	step_time = 0.0
+	var hand_pos = hand.global_position
+	start_pos = hand_pos
+	int_pos = global_position + (attack_obj.global_position - global_position).normalized() * 40
 
 func step(g_pos):
 	if goal_pos == g_pos:
@@ -41,6 +48,8 @@ func step(g_pos):
 	step_time = 0.0
 
 func _process(delta):
+	if attack_obj != null:
+		goal_pos = attack_obj.global_position
 	step_time += delta
 	var target_pos = Vector2()
 	var t = step_time / step_rate
@@ -50,6 +59,15 @@ func _process(delta):
 		target_pos = int_pos.linear_interpolate(goal_pos, (t - 0.5) / 0.5)
 	else:
 		target_pos = goal_pos
+		if attack_obj != null:
+			if hand.global_position.distance_to(attack_obj.global_position) < 20 and !attack_obj.dead:
+				var s_pos = attack_obj.global_position
+				attack_obj.get_parent().remove_child(attack_obj)
+				hand.add_child(attack_obj)
+				attack_obj.global_position = s_pos
+				attack_obj.kill()
+			attack_obj = null
+			
 	set_hand_pos(target_pos)
 
 func set_hand_pos(target_pos):
