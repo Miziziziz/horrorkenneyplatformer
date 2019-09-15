@@ -30,8 +30,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("exit"):
 		get_tree().quit()
 	if dead and Input.is_action_just_pressed("restart"):
-		FanSoundManager.stop_fan()
-		get_tree().reload_current_scene()
+		LevelManager.restart_level()
+		
 
 var was_grounded = true
 var was_moving = false

@@ -29,7 +29,6 @@ emission_shape = 1
 emission_sphere_radius = 50.0
 flag_disable_z = true
 gravity = Vector3( 0, 200, 0 )
-angular_velocity = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 3.0
@@ -37,7 +36,7 @@ scale_random = 0.53
 color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="Animation" id=3]
-length = 2.2
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("LargeArcLight3:enabled")
 tracks/0/interp = 1
@@ -93,7 +92,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 2.1 ),
+"times": PoolRealArray( 3.6 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -121,7 +120,6 @@ emission_shape = 1
 emission_sphere_radius = 28.95
 flag_disable_z = true
 gravity = Vector3( 0, 98, 0 )
-angular_velocity = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 3.0
@@ -166,6 +164,7 @@ text_to_show = "I made it to the escape ship!"
 position = Vector2( 1241, -442 )
 rotation = 0.785397
 is_static = true
+cur_travel_dir = 1
 
 [node name="Lights" type="Node2D" parent="."]
 

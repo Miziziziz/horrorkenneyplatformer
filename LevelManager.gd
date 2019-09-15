@@ -21,6 +21,13 @@ func load_previous_level():
 	level_ind = (level_ind-1) % level_list.size()
 	load_level(level_ind)
 
+func restart_level():
+	for d in delete_on_load:
+		d.queue_free()
+	delete_on_load = []
+	FanSoundManager.stop_fan()
+	get_tree().reload_current_scene()
+
 func load_level(ind):
 	for d in delete_on_load:
 		d.queue_free()
