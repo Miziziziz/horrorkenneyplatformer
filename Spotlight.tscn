@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://art assets/gradients/round_light_texture.png" type="Texture" id=1]
+
+[node name="Spotlight" type="Light2D"]
+position = Vector2( 408, 323 )
+texture = ExtResource( 1 )
+energy = 1.2
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_gradient_length = 0.2

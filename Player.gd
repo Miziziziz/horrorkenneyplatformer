@@ -17,7 +17,6 @@ onready var door_detector = $DoorDetector
 signal stepped
 
 func _ready():
-	TextDisplay.display_text("WHAT THE FUCK WAS THAT", 2)
 	FanSoundManager.start_fan()
 	anim.connect("frame_changed", self, "attempt_play_footstep")
 #	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

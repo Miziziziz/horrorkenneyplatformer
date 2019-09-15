@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TextTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spotlight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://art assets/gradients/arc_light.png" type="Texture" id=6]
+[ext_resource path="res://LargeArcLight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://art assets/gradients/arc_light_large.png" type="Texture" id=8]
+[ext_resource path="res://Crate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=10]
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, -8 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 69, 69 )
+format = 1
+tile_data = PoolIntArray( -65526, 1, 0, -65525, 1, 0, -65524, 1, 0, -65523, 1, 0, -65522, 1, 0, -65521, 1, 0, -65520, 1, 0, -65519, 1, 0, -65518, 1, 0, -65517, 1, 0, -65516, 1, 0, -65515, 1, 0, -65514, 1, 0, -65513, 1, 0, -65512, 1, 0, -65511, 1, 0, -65510, 1, 0, -65509, 1, 0, -65508, 1, 0, -65507, 1, 0, 10, 1, 0, 29, 1, 0, 65546, 1, 0, 65565, 1, 0, 131082, 1, 0, 131101, 1, 0, 196614, 1, 0, 196615, 1, 0, 196616, 1, 0, 196617, 1, 0, 196618, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 196629, 1, 0, 196630, 1, 0, 196631, 1, 0, 196632, 1, 0, 196633, 1, 0, 196637, 1, 0, 262150, 1, 0, 262169, 1, 0, 262173, 1, 0, 327686, 1, 0, 327709, 1, 0, 393222, 1, 0, 393245, 1, 0, 458758, 1, 0, 458781, 1, 0, 524294, 1, 0, 524317, 1, 0, 589825, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589829, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589838, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 589843, 1, 0, 589844, 1, 0, 589845, 1, 0, 589846, 1, 0, 589847, 1, 0, 589848, 1, 0, 589849, 1, 0, 589850, 1, 0, 589851, 1, 0, 589852, 1, 0, 589853, 1, 0, 655361, 1, 0, 655368, 1, 0, 655369, 1, 0, 720897, 1, 0, 720903, 1, 0, 720904, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0 )
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 766, 612 )
+go_to_next_level = false
+
+[node name="Door2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1877.64, 612 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 663, 561 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextTriggers" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="TextTrigger" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 1564, 68 )
+
+[node name="Spotlight" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 1172.5, -136 )
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="ArcLight" parent="Lights" instance=ExtResource( 5 )]
+position = Vector2( 238, 697 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 6 )
+offset = Vector2( 60, -2 )
+
+[node name="ArcLight5" parent="Lights" instance=ExtResource( 5 )]
+position = Vector2( 1874.5, 489.892 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 6 )
+offset = Vector2( 60, -2 )
+
+[node name="ArcLight2" parent="Lights" instance=ExtResource( 5 )]
+position = Vector2( 1122.5, 1.23691e-10 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 6 )
+offset = Vector2( 60, -2 )
+
+[node name="LargeArcLight" parent="Lights" instance=ExtResource( 7 )]
+position = Vector2( 795.986, 280.535 )
+
+[node name="LargeArcLight2" type="Light2D" parent="Lights"]
+position = Vector2( 1475.23, 272.587 )
+rotation = 1.57079
+scale = Vector2( 2.40296, 2.40296 )
+texture = ExtResource( 8 )
+offset = Vector2( 90, -2 )
+energy = 1.2
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_gradient_length = 0.2
+
+[node name="Crates" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Crate" parent="Crates" instance=ExtResource( 9 )]
+
+[node name="Crate2" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1020, 595.794 )
+
+[node name="Crate3" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1003.5, 561 )
+
+[node name="Crate4" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 994.739, 527 )
+
+[node name="Crate5" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1002.5, 493 )
+
+[node name="Crate6" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1105, 595 )
+
+[node name="Crate7" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1105, 561 )
+
+[node name="Crate8" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1105, 527 )
+
+[node name="Crate9" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1105, 493 )
+
+[node name="Crate10" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1139, 595 )
+
+[node name="Crate11" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1190, 595 )
+
+[node name="Crate12" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1190, 561 )
+
+[node name="Crate13" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1190, 527 )
+
+[node name="Crate14" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1194.32, 493 )
+
+[node name="Crate15" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1190, 459 )
+
+[node name="Crate16" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1190, 425 )
+
+[node name="Crate17" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1224.5, 595.794 )
+
+[node name="Crate18" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1224.5, 565.829 )
+
+[node name="Crate19" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1228.29, 529.383 )
+
+[node name="Crate20" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1275, 595 )
+
+[node name="Crate21" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1326, 595 )
+
+[node name="Crate22" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1326, 561 )
+
+[node name="Crate23" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1329.99, 526.603 )
+
+[node name="Crate24" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1326, 493 )
+
+[node name="Crate25" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1326, 459 )
+
+[node name="Crate26" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1363.79, 595 )
+
+[node name="Crate27" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1360, 561 )
+
+[node name="Crate28" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1428, 595 )
+
+[node name="Crate29" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1428, 561 )
+
+[node name="Crate30" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1437.65, 527 )
+
+[node name="Crate31" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1530, 595.794 )
+
+[node name="Crate32" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1530, 561 )
+
+[node name="Crate33" parent="Crates" instance=ExtResource( 9 )]
+position = Vector2( 1530, 527 )
+
+[node name="Monster" parent="." instance=ExtResource( 10 )]
+position = Vector2( 888.952, 68 )

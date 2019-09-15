@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://art assets/p1_walk/p1_jump.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://sfx/player_footsteps/footstep00.ogg" type="AudioStream" id=10]
 [ext_resource path="res://FootStepPlayer.gd" type="Script" id=11]
 [ext_resource path="res://sfx/death_sound.ogg" type="AudioStream" id=12]
+[ext_resource path="res://BlackAndWhiteFilter.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 resource_name = "walk"
@@ -156,3 +157,5 @@ script = ExtResource( 11 )
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+
+[node name="BlackAndWhiteShader" parent="." instance=ExtResource( 13 )]

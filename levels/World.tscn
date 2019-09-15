@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TextTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Spotlight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://art assets/tiles/box.png" type="Texture" id=6]
+[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 17, 17 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 17, 17, -17, 17, -17, -17, 17, -17 )
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 69, 69 )
+format = 1
+tile_data = PoolIntArray( -196614, 1, 0, -196613, 1, 0, -196612, 1, 0, -196611, 1, 0, -196610, 1, 0, -196609, 1, 0, -262144, 1, 0, -262143, 1, 0, -262142, 1, 0, -262141, 1, 0, -262140, 1, 0, -262139, 1, 0, -131078, 1, 0, -131077, 1, 0, -131076, 1, 0, -131075, 1, 0, -131074, 1, 0, -131073, 1, 0, -196608, 1, 0, -196607, 1, 0, -196606, 1, 0, -196605, 1, 0, -196604, 1, 0, -196603, 1, 0, 65530, 1, 0, 65531, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 131068, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 65541, 1, 0, 65542, 1, 0, 65550, 1, 0, 65551, 1, 0, 65552, 1, 0, 65553, 1, 0, 65554, 1, 0, 65555, 1, 0, 65556, 1, 0, 196598, 1, 0, 196604, 1, 0, 196605, 1, 0, 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 131089, 1, 0, 131090, 1, 0, 131091, 1, 0, 131092, 1, 0, 262133, 1, 0, 262134, 1, 0, 262135, 1, 0, 262136, 1, 0, 262137, 1, 0, 262138, 1, 0, 262139, 1, 0, 262140, 1, 0, 196619, 1, 0, 196620, 1, 0, 196621, 1, 0, 196622, 1, 0, 196623, 1, 0, 196624, 1, 0, 196625, 1, 0, 196626, 1, 0, 196627, 1, 0, 196628, 1, 0, 327669, 1, 0, 262164, 1, 0, 393205, 1, 0, 327700, 1, 0, 458741, 1, 0, 393236, 1, 0, 524277, 1, 0, 458752, 1, 0, 458753, 1, 0, 458754, 1, 0, 458755, 1, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 1, 0, 458760, 1, 0, 458761, 1, 0, 458762, 1, 0, 458763, 1, 0, 458764, 1, 0, 458765, 1, 0, 458766, 1, 0, 458767, 1, 0, 458772, 1, 0, 458773, 1, 0, 458774, 1, 0, 458775, 1, 0, 458776, 1, 0, 458777, 1, 0, 458778, 1, 0, 458779, 1, 0, 589813, 1, 0, 524288, 1, 0, 524289, 1, 0, 524290, 1, 0, 524291, 1, 0, 524292, 1, 0, 524293, 1, 0, 524294, 1, 0, 524295, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 524299, 1, 0, 524300, 1, 0, 524301, 1, 0, 524302, 1, 0, 524303, 1, 0, 524308, 1, 0, 655348, 1, 0, 655349, 1, 0, 655350, 1, 0, 655351, 1, 0, 655352, 1, 0, 655353, 1, 0, 655354, 1, 0, 655355, 1, 0, 655356, 1, 0, 655357, 1, 0, 589844, 1, 0, 720893, 1, 0, 655380, 1, 0, 786429, 1, 0, 720916, 1, 0, 851965, 1, 0, 851966, 1, 0, 851967, 1, 0, 786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786438, 1, 0, 786439, 1, 0, 786440, 1, 0, 786441, 1, 0, 786442, 1, 0, 786443, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 786449, 1, 0, 786450, 1, 0, 786451, 1, 0, 786452, 1, 0, 786453, 1, 0 )
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 986, 493 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 850, 442 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextTriggers" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="TextTrigger" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 850, 408 )
+text_to_show = "hello I am a test"
+
+[node name="TextTrigger2" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 544, 408 )
+text_to_show = "Oh no another test this is"
+mood_to_show = 1
+
+[node name="TextTrigger3" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 238.5, 408 )
+text_to_show = "OMG WTF IS GOING ON"
+mood_to_show = 2
+
+[node name="Spotlight" parent="." instance=ExtResource( 5 )]
+position = Vector2( 901, 306 )
+
+[node name="Spotlight2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1258, 799 )
+
+[node name="Spotlight3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 34, 646 )
+
+[node name="Spotlight4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 204, 238 )
+scale = Vector2( 1.13086, 1.13086 )
+
+[node name="Spotlight5" parent="." instance=ExtResource( 5 )]
+position = Vector2( -408, 340 )
+scale = Vector2( 1.46289, 1.46289 )
+
+[node name="Crate" type="RigidBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 272, 459 )
+
+[node name="Sprite" type="Sprite" parent="Crate"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crate"]
+shape = SubResource( 3 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Crate"]
+occluder = SubResource( 4 )
+
+[node name="Monster" parent="." instance=ExtResource( 7 )]
+position = Vector2( 442, 714 )

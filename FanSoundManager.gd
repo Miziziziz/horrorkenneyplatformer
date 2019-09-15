@@ -8,11 +8,14 @@ var fan_running = false
 
 var toggle_after_time = 5.0
 var cur_time = 0.0
+var dont_toggle = false
 
 func start_fan():
 	fan_running = true
+	cur_time = 0.0
 	if !playing:
 		play()
+	dont_toggle = false
 
 func stop_fan():
 	fan_running = false
@@ -21,7 +24,7 @@ func stop_fan():
 
 func _process(delta):
 	cur_time += delta
-	if cur_time >= toggle_after_time:
+	if cur_time >= toggle_after_time and !dont_toggle:
 		cur_time = 0.0
 		fan_running = !fan_running
 	

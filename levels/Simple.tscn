@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TextTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Spotlight.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art assets/gradients/arc_light.png" type="Texture" id=7]
+[ext_resource path="res://LargeArcLight.tscn" type="PackedScene" id=8]
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 69, 69 )
+format = 1
+tile_data = PoolIntArray( 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 25, 1, 0, 26, 1, 0, 27, 1, 0, 28, 1, 0, 29, 1, 0, 30, 1, 0, 31, 1, 0, 32, 1, 0, 33, 1, 0, 34, 1, 0, 35, 1, 0, 36, 1, 0, 37, 1, 0, 38, 1, 0, 39, 1, 0, 40, 1, 0, 41, 1, 0, 42, 1, 0, 43, 1, 0, 44, 1, 0, 45, 1, 0, 65550, 1, 0, 65581, 1, 0, 131086, 1, 0, 131117, 1, 0, 196622, 1, 0, 196653, 1, 0, 262158, 1, 0, 262189, 1, 0, 327694, 1, 0, 327725, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0, 393239, 1, 0, 393240, 1, 0, 393241, 1, 0, 393242, 1, 0, 393243, 1, 0, 393244, 1, 0, 393245, 1, 0, 393246, 1, 0, 393247, 1, 0, 393248, 1, 0, 393249, 1, 0, 393250, 1, 0, 393251, 1, 0, 393252, 1, 0, 393253, 1, 0, 393254, 1, 0, 393255, 1, 0, 393256, 1, 0, 393257, 1, 0, 393258, 1, 0, 393259, 1, 0, 393260, 1, 0, 393261, 1, 0 )
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1190, 408 )
+go_to_next_level = false
+
+[node name="Door2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2057, 408.215 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1241, 367.11 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextTriggers" type="Node2D" parent="."]
+
+[node name="TextTrigger" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 1309, 357 )
+text_to_show = "It came after me when the fan turned off... Oh god it's in here too!"
+mood_to_show = 1
+
+[node name="Monster" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1785, 276.886 )
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Spotlight" parent="Lights" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 1122, 85 )
+
+[node name="ArcLight" parent="Lights" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 1392.15, -171 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 7 )
+offset = Vector2( 60, -2 )
+
+[node name="LargeArcLight" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 1326, 85 )
+
+[node name="LargeArcLight2" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 2074, 85 )
+
+[node name="LargeArcLight3" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 2805, 85 )
+
+[node name="Crates" type="Node2D" parent="."]

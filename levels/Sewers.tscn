@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TextTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Spotlight.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art assets/gradients/arc_light.png" type="Texture" id=7]
+[ext_resource path="res://LargeArcLight.tscn" type="PackedScene" id=8]
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 69, 69 )
+format = 1
+tile_data = PoolIntArray( 196606, 1, 0, 196607, 1, 0, 131072, 1, 0, 131073, 1, 0, 131074, 1, 0, 131075, 1, 0, 131076, 1, 0, 131077, 1, 0, 131078, 1, 0, 131079, 1, 0, 131080, 1, 0, 131081, 1, 0, 131082, 1, 0, 131083, 1, 0, 131084, 1, 0, 131085, 1, 0, 131086, 1, 0, 131087, 1, 0, 131088, 1, 0, 131089, 1, 0, 131090, 1, 0, 262142, 1, 0, 196626, 1, 0, 327678, 1, 0, 262162, 1, 0, 393214, 1, 0, 327698, 1, 0, 458750, 1, 0, 393218, 1, 0, 393219, 1, 0, 393220, 1, 0, 393221, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 393225, 1, 0, 393226, 1, 0, 393227, 1, 0, 393228, 1, 0, 393230, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 524286, 1, 0, 458754, 1, 0, 458770, 1, 0, 589822, 1, 0, 524290, 1, 0, 524306, 1, 0, 655358, 1, 0, 589826, 1, 0, 589827, 1, 0, 589828, 1, 0, 589830, 1, 0, 589831, 1, 0, 589832, 1, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0, 589837, 1, 0, 589839, 1, 0, 589840, 1, 0, 589841, 1, 0, 589842, 1, 0, 720894, 1, 0, 655378, 1, 0, 786430, 1, 0, 720914, 1, 0, 851966, 1, 0, 786450, 1, 0, 917502, 1, 0, 851968, 1, 0, 851969, 1, 0, 851970, 1, 0, 851971, 1, 0, 851972, 1, 0, 851973, 1, 0, 851974, 1, 0, 851975, 1, 0, 851976, 1, 0, 851977, 1, 0, 851978, 1, 0, 851979, 1, 0, 851980, 1, 0, 851981, 1, 0, 851982, 1, 0, 851986, 1, 0, 983038, 1, 0, 917518, 1, 0, 917522, 1, 0, 1048574, 1, 0, 983054, 1, 0, 983058, 1, 0, 1114100, 1, 0, 1114101, 1, 0, 1114102, 1, 0, 1114103, 1, 0, 1114104, 1, 0, 1114105, 1, 0, 1114106, 1, 0, 1114107, 1, 0, 1114108, 1, 0, 1114109, 1, 0, 1114110, 1, 0, 1114111, 1, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048594, 1, 0, 1179636, 1, 0, 1114130, 1, 0, 1245172, 1, 0, 1179666, 1, 0, 1310708, 1, 0, 1245202, 1, 0, 1376244, 1, 0, 1376245, 1, 0, 1376246, 1, 0, 1376247, 1, 0, 1376248, 1, 0, 1376249, 1, 0, 1376250, 1, 0, 1376251, 1, 0, 1376252, 1, 0, 1376253, 1, 0, 1376254, 1, 0, 1376255, 1, 0, 1310720, 1, 0, 1310721, 1, 0, 1310722, 1, 0, 1310723, 1, 0, 1310724, 1, 0, 1310725, 1, 0, 1310726, 1, 0, 1310727, 1, 0, 1310728, 1, 0, 1310729, 1, 0, 1310730, 1, 0, 1310731, 1, 0, 1310732, 1, 0, 1310733, 1, 0, 1310734, 1, 0, 1310735, 1, 0, 1310736, 1, 0, 1310737, 1, 0, 1310738, 1, 0 )
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1190, 408 )
+go_to_next_level = false
+
+[node name="Door2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -697, 1377 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1139, 340 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextTriggers" type="Node2D" parent="."]
+
+[node name="TextTrigger" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 1564, 68 )
+
+[node name="Monster" parent="." instance=ExtResource( 5 )]
+position = Vector2( 221, 276.886 )
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Spotlight" parent="Lights" instance=ExtResource( 6 )]
+position = Vector2( 1122, 85 )
+
+[node name="ArcLight" parent="Lights" instance=ExtResource( 6 )]
+position = Vector2( 1392.15, -171 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 7 )
+offset = Vector2( 60, -2 )
+
+[node name="ArcLight2" parent="Lights" instance=ExtResource( 6 )]
+position = Vector2( 374, 537.945 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 7 )
+offset = Vector2( 60, -2 )
+
+[node name="ArcLight3" parent="Lights" instance=ExtResource( 6 )]
+position = Vector2( 1003.5, 537.945 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 7 )
+offset = Vector2( 60, -2 )
+
+[node name="ArcLight4" parent="Lights" instance=ExtResource( 6 )]
+position = Vector2( 578, 1020 )
+rotation = 1.57079
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 7 )
+offset = Vector2( 60, -2 )
+
+[node name="LargeArcLight" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 204, 697 )
+
+[node name="LargeArcLight2" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 935, 697 )
+
+[node name="LargeArcLight3" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 969, 221 )
+
+[node name="LargeArcLight4" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 272, 221 )
+
+[node name="LargeArcLight5" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 153, 1190 )
+
+[node name="LargeArcLight6" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 918, 1190 )
+
+[node name="LargeArcLight7" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( -527, 1190 )
+
+[node name="Crates" type="Node2D" parent="."]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+void fragment(){
+	float vignette = distance(UV, vec2(0.5));
+	vec4 col = textureLod(SCREEN_TEXTURE, SCREEN_UV, vignette + 0.7);
+	float lum = (col.r*.3+col.g*.59+col.b*.11);
+	
+	COLOR.rgb = mix(vec3(lum), vec3(0.0, 0.0, 0.0), vignette * 1.4);
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[node name="BlackAndWhiteShader" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0

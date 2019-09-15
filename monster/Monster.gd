@@ -8,8 +8,8 @@ onready var left_ray = $LeftRay
 onready var down_ray = $DownRay
 onready var up_ray = $UpRay
 
-export var h_sprint_move_speed = 200
-export var v_sprint_move_speed = 160
+export var h_sprint_move_speed = 240
+export var v_sprint_move_speed = 220
 export var h_walk_move_speed = 100
 export var v_walk_move_speed = 80
 
@@ -20,6 +20,8 @@ var step_time = 0.0
 var leg_ind = 0
 var step_left = false
 
+export var is_static = false
+
 enum TRAVEL_DIR {UP, DOWN, LEFT, RIGHT}
 export var cur_travel_dir = TRAVEL_DIR.RIGHT
 
@@ -27,13 +29,14 @@ var player = null
 
 func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
+	if is_static:
+		return
 	set_start_leg_positions()
 	player.connect("stepped", self, "alert")
 
 func alert():
 	if FanSoundManager.is_safe_to_move() or sprinting:
 		return
-	print("alerted")
 	sprinting = true
 	if player.global_position.x > global_position.x:
 		cur_travel_dir = TRAVEL_DIR.RIGHT
@@ -64,12 +67,14 @@ func get_left_ray():
 
 func get_right_ray():
 	var space_state = get_world_2d().direct_space_state
-	var base_r = 40
+	var base_r = 30
 	if cur_travel_dir == TRAVEL_DIR.LEFT:
 		base_r = 60
 	return space_state.intersect_ray(global_position, global_position + 2000 * Vector2.RIGHT.rotated(deg2rad(base_r + rand_range(leg_rot_range.x, leg_rot_range.y))), [], collision_mask)
 
 func _physics_process(delta):
+	if is_static:
+		return
 	var move_vec = Vector2()
 	
 	if cur_travel_dir == TRAVEL_DIR.RIGHT:

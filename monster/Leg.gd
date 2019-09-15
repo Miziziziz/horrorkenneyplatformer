@@ -11,6 +11,7 @@ var len_middle = 0
 var len_lower = 0
 
 export var flipped = true
+export var is_static = false
 
 var goal_pos = Vector2()
 var int_pos = Vector2()
@@ -54,8 +55,10 @@ func step(g_pos):
 	step_time = 0.0
 
 func _process(delta):
+	if is_static:
+		return
 	if attack_obj != null:
-		goal_pos = attack_obj.global_position
+		goal_pos = attack_obj.global_position + (attack_obj.global_position - global_position)
 	step_time += delta
 	var target_pos = Vector2()
 	var t = step_time / step_rate
@@ -66,7 +69,9 @@ func _process(delta):
 	else:
 		target_pos = goal_pos
 		if attack_obj != null:
-			if hand.global_position.distance_to(attack_obj.global_position) < 20 and !attack_obj.dead:
+			var result = get_world_2d().direct_space_state.intersect_ray(joint1.global_position, hand.global_position , [], 2)
+			if result and result.collider.name == "Player" and !attack_obj.dead:
+			#if hand.global_position.distance_to(attack_obj.global_position) < 20 and !attack_obj.dead:
 				var s_pos = attack_obj.global_position
 				attack_obj.get_parent().remove_child(attack_obj)
 				hand.add_child(attack_obj)
