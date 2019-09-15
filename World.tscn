@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://art assets/gradients/round_light_texture.png" type="Texture" id=4]
-[ext_resource path="res://art assets/tiles/box.png" type="Texture" id=5]
-[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TextTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://art assets/gradients/round_light_texture.png" type="Texture" id=5]
+[ext_resource path="res://art assets/tiles/box.png" type="Texture" id=6]
+[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -45,6 +46,22 @@ position = Vector2( 850, 442 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
 
+[node name="TextTriggers" type="Node2D" parent="."]
+
+[node name="TextTrigger" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 850, 408 )
+text_to_show = "hello I am a test"
+
+[node name="TextTrigger2" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 544, 408 )
+text_to_show = "Oh no another test this is"
+mood_to_show = 1
+
+[node name="TextTrigger3" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 238.5, 408 )
+text_to_show = "OMG WTF IS GOING ON"
+mood_to_show = 2
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 editor/display_folded = true
 
@@ -54,8 +71,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 289, 340 )
-texture = ExtResource( 4 )
+position = Vector2( 408, 323 )
+texture = ExtResource( 5 )
 energy = 1.2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -64,7 +81,7 @@ shadow_gradient_length = 0.2
 [node name="Light2D5" type="Light2D" parent="."]
 position = Vector2( 1241, 408 )
 scale = Vector2( 3.02246, 3.02246 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 energy = 1.2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -73,7 +90,7 @@ shadow_gradient_length = 0.2
 [node name="Light2D6" type="Light2D" parent="."]
 position = Vector2( 782, 748 )
 scale = Vector2( 3.02246, 3.02246 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 energy = 1.2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -82,7 +99,7 @@ shadow_gradient_length = 0.2
 [node name="Light2D2" type="Light2D" parent="."]
 position = Vector2( -255, 442 )
 scale = Vector2( 1.76172, 1.76172 )
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 energy = 1.2
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -94,7 +111,7 @@ position = Vector2( 272, 459 )
 
 [node name="Sprite" type="Sprite" parent="Crate"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crate"]
 shape = SubResource( 3 )
@@ -108,7 +125,7 @@ position = Vector2( 221, 459 )
 
 [node name="Sprite" type="Sprite" parent="Crate2"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crate2"]
 shape = SubResource( 3 )
@@ -122,7 +139,7 @@ position = Vector2( 306, 459 )
 
 [node name="Sprite" type="Sprite" parent="Crate3"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crate3"]
 shape = SubResource( 3 )
@@ -130,5 +147,5 @@ shape = SubResource( 3 )
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Crate3"]
 occluder = SubResource( 4 )
 
-[node name="Monster" parent="." instance=ExtResource( 6 )]
+[node name="Monster" parent="." instance=ExtResource( 7 )]
 position = Vector2( 442, 714 )

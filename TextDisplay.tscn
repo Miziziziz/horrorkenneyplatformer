@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TextDisplay.gd" type="Script" id=1]
+[ext_resource path="res://art assets/p1_walk/p1_front.png" type="Texture" id=2]
+[ext_resource path="res://art assets/p1_walk/p1_hurt.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "shake"
+length = 0.1
+loop = true
+step = 0.02
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1.88622, 4.98725 ), Vector2( 0.157715, 2.35935 ), Vector2( -0.718246, 0.0234308 ), Vector2( -3.93013, 4.11128 ), Vector2( -6.55801, 1.48338 ) ]
+}
+
+[node name="TextDisplay" type="CanvasLayer"]
+layer = 3
+script = ExtResource( 1 )
+
+[node name="Nodes" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="FacePanel" type="Panel" parent="Nodes"]
+editor/display_folded = true
+margin_left = 16.6785
+margin_top = 16.2152
+margin_right = 84.6785
+margin_bottom = 74.2152
+rect_clip_content = true
+
+[node name="HappyDisplay" type="TextureRect" parent="Nodes/FacePanel"]
+visible = false
+margin_left = 1.03371
+margin_top = 4.1113
+margin_right = 67.0337
+margin_bottom = 96.1113
+texture = ExtResource( 2 )
+
+[node name="SadDisplay" type="TextureRect" parent="Nodes/FacePanel"]
+visible = false
+margin_left = -1.88622
+margin_top = 4.98725
+margin_right = 67.1138
+margin_bottom = 96.9873
+rect_rotation = 0.219739
+texture = ExtResource( 3 )
+
+[node name="FreakedOutDisplay" type="TextureRect" parent="Nodes/FacePanel"]
+margin_left = -6.10696
+margin_top = 1.82167
+margin_right = 62.893
+margin_bottom = 93.8217
+rect_rotation = 0.219739
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Nodes/FacePanel/FreakedOutDisplay"]
+autoplay = "shake"
+anims/shake = SubResource( 1 )
+
+[node name="TextPanel" type="Panel" parent="Nodes"]
+margin_left = 91.0
+margin_top = 16.0
+margin_right = 345.0
+margin_bottom = 74.0
+
+[node name="Label" type="Label" parent="Nodes/TextPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+text = "Hello World asdasdas dasda sdasdasd"
+autowrap = true
+clip_text = true

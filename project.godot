@@ -23,6 +23,7 @@ config/icon="res://icon.png"
 
 LevelManager="*res://LevelManager.tscn"
 FanSoundManager="*res://FanSoundManager.tscn"
+TextDisplay="*res://TextDisplay.tscn"
 
 [input]
 
