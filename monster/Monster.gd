@@ -21,6 +21,7 @@ var leg_ind = 0
 var step_left = false
 
 export var is_static = false
+export var auto_start_legs = true
 
 enum TRAVEL_DIR {UP, DOWN, LEFT, RIGHT}
 export var cur_travel_dir = TRAVEL_DIR.RIGHT
@@ -29,9 +30,11 @@ var player = null
 
 func _ready():
 	player = get_tree().get_nodes_in_group("player")[0]
+	if auto_start_legs:
+		set_start_leg_positions()
 	if is_static:
 		return
-	set_start_leg_positions()
+	
 	player.connect("stepped", self, "alert")
 
 func alert():

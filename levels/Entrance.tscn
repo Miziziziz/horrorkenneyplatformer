@@ -51,7 +51,7 @@ go_to_next_level = false
 position = Vector2( 3026, 901 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-position = Vector2( 171, 833 )
+position = Vector2( 340, 833 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
@@ -110,8 +110,8 @@ position = Vector2( 2516, 714 )
 editor/display_folded = true
 position = Vector2( 1040, 646 )
 rotation = -2.87979
-scale = Vector2( 1, 1 )
 is_static = true
+auto_start_legs = false
 
 [node name="LeftLegs" parent="StaticMonster" index="1"]
 editor/display_folded = true

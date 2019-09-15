@@ -34,10 +34,11 @@ position = Vector2( 663, 561 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="TextTriggers" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="TextTrigger" parent="TextTriggers" instance=ExtResource( 4 )]
-position = Vector2( 1564, 68 )
+position = Vector2( 716.832, 526.112 )
+text_to_show = "I'll have to push the crates out of the way to get through"
+mood_to_show = 1
 
 [node name="Spotlight" parent="." instance=ExtResource( 5 )]
 visible = false
@@ -81,7 +82,6 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_gradient_length = 0.2
 
 [node name="Crates" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Crate" parent="Crates" instance=ExtResource( 9 )]
 
@@ -96,18 +96,6 @@ position = Vector2( 994.739, 527 )
 
 [node name="Crate5" parent="Crates" instance=ExtResource( 9 )]
 position = Vector2( 1002.5, 493 )
-
-[node name="Crate6" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1105, 595 )
-
-[node name="Crate7" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1105, 561 )
-
-[node name="Crate8" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1105, 527 )
-
-[node name="Crate9" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1105, 493 )
 
 [node name="Crate10" parent="Crates" instance=ExtResource( 9 )]
 position = Vector2( 1139, 595 )
@@ -130,18 +118,6 @@ position = Vector2( 1190, 459 )
 [node name="Crate16" parent="Crates" instance=ExtResource( 9 )]
 position = Vector2( 1190, 425 )
 
-[node name="Crate17" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1224.5, 595.794 )
-
-[node name="Crate18" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1224.5, 565.829 )
-
-[node name="Crate19" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1228.29, 529.383 )
-
-[node name="Crate20" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1275, 595 )
-
 [node name="Crate21" parent="Crates" instance=ExtResource( 9 )]
 position = Vector2( 1326, 595 )
 
@@ -156,12 +132,6 @@ position = Vector2( 1326, 493 )
 
 [node name="Crate25" parent="Crates" instance=ExtResource( 9 )]
 position = Vector2( 1326, 459 )
-
-[node name="Crate26" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1363.79, 595 )
-
-[node name="Crate27" parent="Crates" instance=ExtResource( 9 )]
-position = Vector2( 1360, 561 )
 
 [node name="Crate28" parent="Crates" instance=ExtResource( 9 )]
 position = Vector2( 1428, 595 )

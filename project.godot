@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="4devs1artep2"
-run/main_scene="res://levels/World.tscn"
+run/main_scene="res://levels/Intro.tscn"
 config/icon="res://icon.png"
 
 [autoload]

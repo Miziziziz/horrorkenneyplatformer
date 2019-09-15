@@ -16,10 +16,15 @@ onready var door_detector = $DoorDetector
 
 signal stepped
 
+export var use_fan = true
+
 func _ready():
-	FanSoundManager.start_fan()
+	if use_fan:
+		FanSoundManager.start_fan()
+	else:
+		FanSoundManager.dont_toggle = true
 	anim.connect("frame_changed", self, "attempt_play_footstep")
-#	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta):
 	if Input.is_action_just_pressed("exit"):
@@ -73,14 +78,24 @@ func _physics_process(delta):
 	
 	var doors = door_detector.get_overlapping_areas()
 	if doors.size() > 0:
-		if Input.is_action_just_pressed("use"):
-			if doors[0].go_to_next_level:
-				LevelManager.load_next_level()
+		if doors[0].has_method("use"):
+			if Input.is_action_just_pressed("use"):
+				doors[0].use()
+			if !doors[0].switched:
+				$CanvasLayer/UseSwitchMessage.show()
 			else:
-				LevelManager.load_previous_level()
-		$CanvasLayer/OpenDoorMessage.show()
+				$CanvasLayer/UseSwitchMessage.hide()
+		else:
+			$CanvasLayer/OpenDoorMessage.show()
+			if Input.is_action_just_pressed("use"):
+				if doors[0].go_to_next_level:
+					LevelManager.load_next_level()
+				else:
+					LevelManager.load_previous_level()
+		
 	else:
 		$CanvasLayer/OpenDoorMessage.hide()
+		$CanvasLayer/UseSwitchMessage.hide()
 	
 	var is_moving = move_dir != 0.0
 	if was_grounded != grounded or (grounded and !was_moving and is_moving):

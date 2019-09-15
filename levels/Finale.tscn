@@ -1,0 +1,653 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Door.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TextTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Spotlight.tscn" type="PackedScene" id=6]
+[ext_resource path="res://art assets/gradients/arc_light.png" type="Texture" id=7]
+[ext_resource path="res://LargeArcLight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://monster/Monster.gd" type="Script" id=9]
+[ext_resource path="res://monster/Body.gd" type="Script" id=10]
+[ext_resource path="res://art assets/p1_walk/p1_front.png" type="Texture" id=11]
+[ext_resource path="res://monster/Leg.tscn" type="PackedScene" id=12]
+[ext_resource path="res://monster/Leg.gd" type="Script" id=13]
+[ext_resource path="res://monster/MonsterStepPlayer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://LoadNextLevel.gd" type="Script" id=15]
+[ext_resource path="res://Lever.gd" type="Script" id=16]
+[ext_resource path="res://art assets/items/switchLeft.png" type="Texture" id=17]
+[ext_resource path="res://art assets/items/switchRight.png" type="Texture" id=18]
+[ext_resource path="res://sfx/metal_button_press1.wav" type="AudioStream" id=19]
+[ext_resource path="res://art assets/p1_walk/p1_hurt.png" type="Texture" id=20]
+[ext_resource path="res://art assets/tiles/bridge.png" type="Texture" id=21]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="ParticlesMaterial" id=2]
+emission_shape = 1
+emission_sphere_radius = 50.0
+flag_disable_z = true
+gravity = Vector3( 0, 200, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.53
+color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="Animation" id=3]
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("LargeArcLight3:enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LargeArcLight:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LargeArcLight2:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LargeArcLight4:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 2.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "load_next"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Monster:is_static")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 51, 30.2274 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 28.95
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.74
+color = Color( 0, 0, 0, 1 )
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 69, 69 )
+format = 1
+tile_data = PoolIntArray( -1048561, 1, 0, -1048554, 1, 0, -983025, 1, 0, -983018, 1, 0, -917489, 1, 0, -917482, 1, 0, -851953, 1, 0, -851946, 1, 0, -786417, 1, 0, -786410, 1, 0, -720881, 1, 0, -720874, 1, 0, -655345, 1, 0, -655338, 1, 0, -589809, 1, 0, -589802, 1, 0, -524273, 1, 0, -524266, 1, 0, -458737, 1, 0, -458730, 1, 0, -393201, 1, 0, -393194, 1, 0, -327665, 1, 0, -327658, 1, 0, -262129, 1, 0, -262122, 1, 0, -196593, 1, 0, -196586, 1, 0, -131057, 1, 0, -131050, 1, 0, -65521, 1, 0, -65514, 1, 0, 15, 1, 0, 22, 1, 0, 65551, 1, 0, 65558, 1, 0, 131087, 1, 0, 131094, 1, 0, 196623, 1, 0, 196630, 1, 0, 262159, 1, 0, 262166, 1, 0, 327695, 1, 0, 327702, 1, 0, 393231, 1, 0, 393232, 1, 0, 393233, 1, 0, 393234, 1, 0, 393235, 1, 0, 393236, 1, 0, 393237, 1, 0, 393238, 1, 0 )
+
+[node name="Door" parent="." instance=ExtResource( 2 )]
+position = Vector2( 884, 391 )
+go_to_next_level = false
+
+[node name="Door2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 969, 391.215 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 1139, 340 )
+
+[node name="Camera2D" parent="Player" index="3"]
+offset = Vector2( 0, -300 )
+
+[node name="CanvasLayer" parent="Player" index="7"]
+editor/display_folded = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="TextTriggers" type="Node2D" parent="."]
+
+[node name="TextTrigger" parent="TextTriggers" instance=ExtResource( 4 )]
+position = Vector2( 1190, 323 )
+text_to_show = "I made it to the escape ship!"
+
+[node name="Monster" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1241, -442 )
+rotation = 0.785397
+is_static = true
+
+[node name="Lights" type="Node2D" parent="."]
+
+[node name="Spotlight" parent="Lights" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 1122, 85 )
+
+[node name="ArcLight5" parent="Lights" instance=ExtResource( 6 )]
+position = Vector2( 1513, 357 )
+rotation = 3.14159
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 7 )
+offset = Vector2( 40, -2 )
+
+[node name="ArcLight6" parent="Lights" instance=ExtResource( 6 )]
+position = Vector2( 1106, 357 )
+rotation = 6.28318
+scale = Vector2( 1.23592, 1.23592 )
+texture = ExtResource( 7 )
+offset = Vector2( 40, -2 )
+
+[node name="LargeArcLight3" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 1513, 357 )
+rotation = -3.14159
+scale = Vector2( 2.70352, 2.70352 )
+enabled = false
+
+[node name="LargeArcLight" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 1118.33, -68 )
+rotation = 0.0
+scale = Vector2( 2.70352, 2.70352 )
+enabled = false
+
+[node name="LargeArcLight2" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 1513, -493 )
+rotation = -3.14159
+scale = Vector2( 2.70352, 2.70352 )
+enabled = false
+
+[node name="LargeArcLight4" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 1122, -799 )
+rotation = 0.0
+scale = Vector2( 2.70352, 2.70352 )
+enabled = false
+
+[node name="LargeArcLight5" parent="Lights" instance=ExtResource( 8 )]
+position = Vector2( 1122, -799 )
+rotation = 0.0
+scale = Vector2( 2.70352, 2.70352 )
+enabled = false
+
+[node name="StaticMonster" type="KinematicBody2D" parent="Lights"]
+editor/display_folded = true
+position = Vector2( 1326, -1530 )
+script = ExtResource( 9 )
+is_static = true
+
+[node name="Body" type="Node2D" parent="Lights/StaticMonster"]
+editor/display_folded = true
+position = Vector2( 13.509, 61.2236 )
+script = ExtResource( 10 )
+
+[node name="Sprite" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0, -17 )
+texture = ExtResource( 11 )
+
+[node name="Sprite2" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 17, 0 )
+rotation = 1.94878
+texture = ExtResource( 11 )
+
+[node name="Sprite3" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 37.5607, -38.9059 )
+rotation = 1.29164
+texture = ExtResource( 11 )
+
+[node name="Sprite4" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -17.0427, 11.8879 )
+rotation = 3.54523
+texture = ExtResource( 11 )
+
+[node name="Sprite5" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -15.9619, -15.1301 )
+rotation = 1.59353
+texture = ExtResource( 11 )
+
+[node name="Sprite6" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -31.092, -55.1167 )
+rotation = -0.58235
+texture = ExtResource( 11 )
+
+[node name="Sprite7" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 4.0314, -39.4463 )
+rotation = 0.646739
+texture = ExtResource( 11 )
+
+[node name="Sprite8" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -2.99329, -69.1661 )
+rotation = 0.378275
+texture = ExtResource( 11 )
+
+[node name="Sprite9" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -64.9456, 7.42995 )
+rotation = 3.91415
+texture = ExtResource( 11 )
+
+[node name="Sprite10" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -56.489, -32.962 )
+rotation = 5.20848
+texture = ExtResource( 11 )
+
+[node name="Sprite11" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -57.0023, -53.4957 )
+rotation = 5.20848
+texture = ExtResource( 11 )
+
+[node name="Sprite12" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -71.3759, -8.32155 )
+rotation = 4.81582
+texture = ExtResource( 11 )
+
+[node name="Sprite13" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( -34.4152, 8.61877 )
+rotation = 3.50798
+texture = ExtResource( 11 )
+
+[node name="Sprite14" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 7.16545, 22.479 )
+rotation = 2.66904
+texture = ExtResource( 11 )
+
+[node name="Sprite15" type="Sprite" parent="Lights/StaticMonster/Body"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 38.4794, -73.516 )
+rotation = 0.949484
+texture = ExtResource( 11 )
+
+[node name="LeftLegs" type="Node2D" parent="Lights/StaticMonster"]
+editor/display_folded = true
+position = Vector2( 0, 31.5038 )
+
+[node name="Leg" parent="Lights/StaticMonster/LeftLegs" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( -49.3028, -9.72911 )
+rotation = -3.14159
+script = ExtResource( 13 )
+flipped = false
+is_static = true
+
+[node name="Joint1" parent="Lights/StaticMonster/LeftLegs/Leg" index="2"]
+rotation = -1.83259
+
+[node name="Joint2" parent="Lights/StaticMonster/LeftLegs/Leg/Joint1" index="1"]
+rotation = -0.261799
+
+[node name="Leg2" parent="Lights/StaticMonster/LeftLegs" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( -52.8483, 39.3798 )
+rotation = -2.09439
+script = ExtResource( 13 )
+flipped = false
+is_static = true
+
+[node name="Joint1" parent="Lights/StaticMonster/LeftLegs/Leg2" index="2"]
+rotation = -1.309
+
+[node name="Joint2" parent="Lights/StaticMonster/LeftLegs/Leg2/Joint1" index="1"]
+rotation = -2.09439
+
+[node name="Leg3" parent="Lights/StaticMonster/LeftLegs" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( -81.2059, 16.6785 )
+rotation = -3.66519
+script = ExtResource( 13 )
+flipped = false
+is_static = true
+
+[node name="Joint1" parent="Lights/StaticMonster/LeftLegs/Leg3" index="2"]
+rotation = -1.57079
+
+[node name="Joint2" parent="Lights/StaticMonster/LeftLegs/Leg3/Joint1" index="1"]
+rotation = -1.0472
+
+[node name="RightLegs" type="Node2D" parent="Lights/StaticMonster"]
+position = Vector2( 0, 31.5038 )
+
+[node name="Leg" parent="Lights/StaticMonster/RightLegs" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 39.6111, 23.6279 )
+rotation = -1.309
+script = ExtResource( 13 )
+is_static = true
+
+[node name="Joint1" parent="Lights/StaticMonster/RightLegs/Leg" index="2"]
+rotation = 2.09439
+
+[node name="Joint2" parent="Lights/StaticMonster/RightLegs/Leg/Joint1" index="1"]
+rotation = 1.309
+
+[node name="Leg2" parent="Lights/StaticMonster/RightLegs" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 60.1976, -27.3342 )
+rotation = -0.261799
+script = ExtResource( 13 )
+is_static = true
+
+[node name="Joint1" parent="Lights/StaticMonster/RightLegs/Leg2" index="2"]
+rotation = 1.57079
+
+[node name="Joint2" parent="Lights/StaticMonster/RightLegs/Leg2/Joint1" index="1"]
+rotation = 1.309
+
+[node name="Leg3" parent="Lights/StaticMonster/RightLegs" instance=ExtResource( 12 )]
+editor/display_folded = true
+position = Vector2( 70.5056, -61.6177 )
+rotation = -0.523598
+script = ExtResource( 13 )
+is_static = true
+
+[node name="Joint1" parent="Lights/StaticMonster/RightLegs/Leg3" index="2"]
+rotation = 1.309
+
+[node name="Joint2" parent="Lights/StaticMonster/RightLegs/Leg3/Joint1" index="1"]
+rotation = 1.309
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lights/StaticMonster"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="RightRay" type="RayCast2D" parent="Lights/StaticMonster"]
+enabled = true
+cast_to = Vector2( 150, 0 )
+
+[node name="LeftRay" type="RayCast2D" parent="Lights/StaticMonster"]
+enabled = true
+cast_to = Vector2( -150, 0 )
+
+[node name="DownRay" type="RayCast2D" parent="Lights/StaticMonster"]
+enabled = true
+cast_to = Vector2( 0, 150 )
+
+[node name="UpRay" type="RayCast2D" parent="Lights/StaticMonster"]
+enabled = true
+cast_to = Vector2( 0, -100 )
+
+[node name="Details" type="Node2D" parent="Lights/StaticMonster"]
+
+[node name="Particles2D" type="Particles2D" parent="Lights/StaticMonster/Details"]
+position = Vector2( -7.35229, 56.3772 )
+amount = 6
+lifetime = 4.0
+local_coords = false
+process_material = SubResource( 2 )
+
+[node name="StepPlayer" parent="Lights/StaticMonster" instance=ExtResource( 14 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Lights"]
+anims/lights_on = SubResource( 3 )
+script = ExtResource( 15 )
+
+[node name="Crates" type="Node2D" parent="."]
+
+[node name="Lever" type="Area2D" parent="."]
+position = Vector2( 1462, 387.227 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lever"]
+shape = SubResource( 4 )
+
+[node name="LeverLeft" type="Sprite" parent="Lever"]
+texture = ExtResource( 17 )
+
+[node name="LeverRight" type="Sprite" parent="Lever"]
+visible = false
+texture = ExtResource( 18 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Lever"]
+stream = ExtResource( 19 )
+bus = "PlayerSteps"
+
+[node name="Bodies" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Body" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1275, -136 )
+rotation = 0.261799
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Body2" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1202, -17 )
+rotation = -0.523598
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body2"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Body3" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1360, -221 )
+rotation = -0.523598
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body3"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Body4" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1428, -187 )
+rotation = 0.785397
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body4"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Body5" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1190, -300 )
+rotation = 0.523598
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body5"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Body6" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1445, -17 )
+rotation = 0.523598
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body6"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Body7" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1360, -68 )
+rotation = 0.523598
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body7"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Body8" type="Sprite" parent="Bodies"]
+editor/display_folded = true
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1411, -340 )
+rotation = -0.523598
+texture = ExtResource( 20 )
+
+[node name="Particles2D" type="Particles2D" parent="Bodies/Body8"]
+lifetime = 5.0
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1360, -136 )
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite2" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1564, -187 )
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite3" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1040, -306 )
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite4" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1054, -17 )
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite5" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1156, -51 )
+rotation = -1.57079
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite6" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1462, -119 )
+rotation = -1.57079
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite7" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1360, -68 )
+rotation = -1.57079
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite8" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1564, -11 )
+rotation = -3.14159
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+
+[node name="Sprite9" type="Sprite" parent="Bodies"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1530, -335 )
+rotation = -3.14159
+scale = Vector2( 4.62857, 0.5 )
+texture = ExtResource( 21 )
+offset = Vector2( 0, -23 )
+[connection signal="activated" from="Lever" to="Lights/AnimationPlayer" method="play" binds= [ "lights_on" ]]
+
+[editable path="Player"]
+
+[editable path="Lights/StaticMonster/LeftLegs/Leg"]
+
+[editable path="Lights/StaticMonster/LeftLegs/Leg2"]
+
+[editable path="Lights/StaticMonster/LeftLegs/Leg3"]
+
+[editable path="Lights/StaticMonster/RightLegs/Leg"]
+
+[editable path="Lights/StaticMonster/RightLegs/Leg2"]
+
+[editable path="Lights/StaticMonster/RightLegs/Leg3"]
