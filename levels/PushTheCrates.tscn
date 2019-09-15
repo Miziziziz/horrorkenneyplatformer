@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://art assets/gradients/arc_light_large.png" type="Texture" id=8]
 [ext_resource path="res://Crate.tscn" type="PackedScene" id=9]
 [ext_resource path="res://monster/Monster.tscn" type="PackedScene" id=10]
+[ext_resource path="res://art assets/tiles/torch.png" type="Texture" id=11]
 
 [node name="World" type="Node2D"]
 
@@ -45,6 +46,7 @@ visible = false
 position = Vector2( 1172.5, -136 )
 
 [node name="Lights" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="ArcLight" parent="Lights" instance=ExtResource( 5 )]
 position = Vector2( 238, 697 )
@@ -82,6 +84,7 @@ shadow_color = Color( 0, 0, 0, 1 )
 shadow_gradient_length = 0.2
 
 [node name="Crates" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Crate" parent="Crates" instance=ExtResource( 9 )]
 
@@ -153,3 +156,31 @@ position = Vector2( 1530, 527 )
 
 [node name="Monster" parent="." instance=ExtResource( 10 )]
 position = Vector2( 888.952, 68 )
+
+[node name="torch" type="Sprite" parent="."]
+position = Vector2( 790.001, 280.001 )
+z_index = -1
+texture = ExtResource( 11 )
+
+[node name="torch2" type="Sprite" parent="."]
+position = Vector2( 1472.37, 280.001 )
+z_index = -1
+texture = ExtResource( 11 )
+
+[node name="torch3" type="Sprite" parent="."]
+position = Vector2( 1122.51, 3.2256 )
+scale = Vector2( 0.485714, 0.485714 )
+z_index = -1
+texture = ExtResource( 11 )
+
+[node name="torch4" type="Sprite" parent="."]
+position = Vector2( 1875.53, 485.598 )
+scale = Vector2( 0.485714, 0.485714 )
+z_index = -1
+texture = ExtResource( 11 )
+
+[node name="torch5" type="Sprite" parent="."]
+position = Vector2( 238.431, 697.582 )
+scale = Vector2( 0.485714, 0.485714 )
+z_index = -1
+texture = ExtResource( 11 )

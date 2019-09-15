@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Spotlight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://art assets/gradients/arc_light.png" type="Texture" id=7]
 [ext_resource path="res://LargeArcLight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art assets/tiles/torch.png" type="Texture" id=9]
 
 [node name="World" type="Node2D"]
 
@@ -64,3 +65,18 @@ position = Vector2( 2380, 85 )
 position = Vector2( 3383, 85 )
 
 [node name="Crates" type="Node2D" parent="."]
+
+[node name="torch" type="Sprite" parent="."]
+position = Vector2( 2375.81, 83.6033 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch2" type="Sprite" parent="."]
+position = Vector2( 1225.61, 83.6033 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch3" type="Sprite" parent="."]
+position = Vector2( 3383.43, 83.6033 )
+z_index = -1
+texture = ExtResource( 9 )

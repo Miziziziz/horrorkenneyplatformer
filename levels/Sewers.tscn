@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://Spotlight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://art assets/gradients/arc_light.png" type="Texture" id=7]
 [ext_resource path="res://LargeArcLight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://art assets/tiles/torch.png" type="Texture" id=9]
+[ext_resource path="res://art assets/items/chain.png" type="Texture" id=10]
+[ext_resource path="res://art assets/items/coinSilver.png" type="Texture" id=11]
+[ext_resource path="res://art assets/items/fireball.png" type="Texture" id=12]
 
 [node name="World" type="Node2D"]
 
@@ -42,11 +46,13 @@ position = Vector2( 221, 276.886 )
 
 [node name="Spotlight" parent="Lights" instance=ExtResource( 6 )]
 position = Vector2( 1122, 85 )
+enabled = false
 
 [node name="ArcLight" parent="Lights" instance=ExtResource( 6 )]
 position = Vector2( 1392.15, -171 )
 rotation = 1.57079
 scale = Vector2( 1.23592, 1.23592 )
+enabled = false
 texture = ExtResource( 7 )
 offset = Vector2( 60, -2 )
 
@@ -86,3 +92,124 @@ position = Vector2( 918, 1190 )
 position = Vector2( -527, 1190 )
 
 [node name="Crates" type="Node2D" parent="."]
+
+[node name="torch" type="Sprite" parent="."]
+position = Vector2( 966.292, 221 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch2" type="Sprite" parent="."]
+position = Vector2( 267.509, 221 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch3" type="Sprite" parent="."]
+position = Vector2( 201.509, 697 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch4" type="Sprite" parent="."]
+position = Vector2( 931.292, 697 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch5" type="Sprite" parent="."]
+position = Vector2( 918, 1173 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch6" type="Sprite" parent="."]
+position = Vector2( 153, 1173 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch7" type="Sprite" parent="."]
+position = Vector2( -527, 1173 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch8" type="Sprite" parent="."]
+position = Vector2( 374, 533 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="torch9" type="Sprite" parent="."]
+position = Vector2( 578, 1020 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -1
+texture = ExtResource( 9 )
+
+[node name="chain" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 75.9016, 1228.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="chain6" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 232.134, 1228.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="chain2" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 76.4016, 1245.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="chain5" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 232.634, 1245.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="chain3" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 75.9016, 1262.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="chain7" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 232.134, 1262.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="chain4" type="Sprite" parent="."]
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 75.9016, 1279.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="chain8" type="Sprite" parent="."]
+editor/display_folded = true
+modulate = Color( 0.290196, 0.286275, 0.286275, 1 )
+position = Vector2( 232.134, 1279.67 )
+rotation = -1.57079
+z_index = -1
+texture = ExtResource( 10 )
+
+[node name="coinSilver" type="Sprite" parent="chain8"]
+position = Vector2( 469.013, 98.1465 )
+texture = ExtResource( 11 )
+
+[node name="coinSilver2" type="Sprite" parent="chain8"]
+position = Vector2( 469.014, 635.721 )
+texture = ExtResource( 11 )
+
+[node name="coinSilver3" type="Sprite" parent="chain8"]
+position = Vector2( -4.39594, 801.688 )
+texture = ExtResource( 11 )
+
+[node name="fireball" type="Sprite" parent="."]
+position = Vector2( 329.263, 810.889 )
+z_index = -1
+texture = ExtResource( 12 )

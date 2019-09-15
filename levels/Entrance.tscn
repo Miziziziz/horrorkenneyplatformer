@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Crate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://LightTrigger.gd" type="Script" id=11]
 [ext_resource path="res://OneShotFan.gd" type="Script" id=12]
+[ext_resource path="res://art assets/tiles/ropeHorizontal.png" type="Texture" id=13]
+[ext_resource path="res://art assets/tiles/torch.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "flicker"
@@ -64,7 +66,6 @@ position = Vector2( 136, 867 )
 text_to_show = "I can't go back outside; I'm out of oxygen"
 
 [node name="Lights" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Spotlight" parent="Lights" instance=ExtResource( 5 )]
 visible = false
@@ -210,6 +211,86 @@ position = Vector2( -1275, -102 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OneShotFan"]
 shape = SubResource( 3 )
+
+[node name="ropeHorizontal" type="Sprite" parent="."]
+position = Vector2( 2483, 768 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal2" type="Sprite" parent="."]
+position = Vector2( 2483, 785 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal3" type="Sprite" parent="."]
+position = Vector2( 2483, 802 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal4" type="Sprite" parent="."]
+position = Vector2( 2551, 802 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal5" type="Sprite" parent="."]
+position = Vector2( 2551, 785 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal6" type="Sprite" parent="."]
+position = Vector2( 2415, 768 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal7" type="Sprite" parent="."]
+position = Vector2( 2415, 785 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal8" type="Sprite" parent="."]
+position = Vector2( 2347, 768 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="ropeHorizontal9" type="Sprite" parent="."]
+position = Vector2( 2398, 803 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="torch" type="Sprite" parent="."]
+position = Vector2( 1734, 493 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="torch2" type="Sprite" parent="."]
+position = Vector2( 523.219, 696.37 )
+scale = Vector2( 0.742857, 0.742857 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="torch4" type="Sprite" parent="."]
+position = Vector2( 1136.18, 485.926 )
+scale = Vector2( 0.742857, 0.742857 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="torch5" type="Sprite" parent="."]
+position = Vector2( 2512.14, 691.452 )
+scale = Vector2( 0.742857, 0.742857 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="torch6" type="Sprite" parent="."]
+position = Vector2( 3025.09, 760.747 )
+scale = Vector2( 0.35899, 0.35899 )
+z_index = -1
+texture = ExtResource( 14 )
+
+[node name="torch3" type="Sprite" parent="."]
+position = Vector2( 134.038, 762.231 )
+scale = Vector2( 0.463746, 0.463746 )
+z_index = -1
+texture = ExtResource( 14 )
 [connection signal="animation_finished" from="Lights/LargeArcLight2/AnimationPlayer" to="Lights/LargeArcLight2/AnimationPlayer/DisplayWhenAnimOver" method="anim_over"]
 [connection signal="body_exited" from="LightTrigger" to="Lights/LargeArcLight2/AnimationPlayer/DisplayWhenAnimOver" method="hide_text_when_exit"]
 [connection signal="player_entered" from="LightTrigger" to="Lights/LargeArcLight2/AnimationPlayer" method="play" binds= [ "flicker" ]]
